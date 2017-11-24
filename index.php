@@ -1,10 +1,13 @@
 <?php
-// require_once('model.php');
+require_once('include/constants.php');
+require_once('model.php');
 
-define('HACKABLE', true);
+$model = new Model();
+$transactions = $model->getAllTransactions();
 
-// $model = new Model();
-
+// echo('<pre>');
+// var_dump($transactions);
+// echo('</pre>');
 ?>
 
 
@@ -25,24 +28,20 @@ define('HACKABLE', true);
                 <thead>
                     <tr>
                         <th scope="col">Amount</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Hash</th>
+                        <th scope="col">Payer</th>
+                        <th scope="col">Receiver</th>
                         <th scope="col">Comment</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($transactions as $tr): ?>
                     <tr>
-                        <th scope="row">307</th>
-                        <td>antonin.neumann</td>
-                        <td>adb7d00889c0b317617fe20e06f8f13d</td>
-                        <td>Potraviny</td>
+                        <th scope="row"><?= $tr['amount'] ?></th>
+                        <td><?= $tr['payer'] ?></td>
+                        <td><?= $tr['payee'] ?></td>
+                        <td><?= $tr['desc'] ?></td>
                     </tr>
-                    <tr>
-                        <th scope="row">1760</th>
-                        <td>ondrej.esler</td>
-                        <td>d8578edf8458ce06fbc5bb76a58c5ca4</td>
-                        <td>Obleceni</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
