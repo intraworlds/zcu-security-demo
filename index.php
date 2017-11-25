@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+header('X-XSS-Protection: 0');
+
 require_once('include/constants.php');
 require_once('include/model.php');
 
@@ -47,6 +49,7 @@ if (isset($_REQUEST['submit'])) {
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     </head>
     <body>
         <div class="container">
