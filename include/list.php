@@ -19,9 +19,9 @@ $transactions = $model->getAllTransactions();
         <?php foreach($transactions as $tr): ?>
         <tr>
             <th scope="row"><?= $tr['amount'] ?></th>
-            <td><?= $tr['payer'] ?></td>
-            <td><?= $tr['payee'] ?></td>
-            <td><?= $tr['desc'] ?></td>
+            <td><?= ENABLE_XSS ? $tr['payer'] : htmlentities($tr['payer']) ?></td>
+            <td><?= ENABLE_XSS ? $tr['payee'] : htmlentities($tr['payee']) ?></td>
+            <td><?= ENABLE_XSS ? $tr['desc'] : htmlentities($tr['desc']) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
