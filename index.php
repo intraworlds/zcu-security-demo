@@ -1,15 +1,45 @@
 <?php
+session_start();
+
 require_once('include/constants.php');
-require_once('model.php');
+require_once('include/model.php');
+
+// logout user
+if (strcmp($_GET['path'], 'logout') == 0) {
+    unset($_SESSION['user']);
+}
 
 $model = new Model();
-$transactions = $model->getAllTransactions();
 
-// echo('<pre>');
-// var_dump($transactions);
-// echo('</pre>');
+// form handlers
+if (isset($_REQUEST['submit'])) {
+    // login
+    if (strcmp($_REQUEST['submit'], 'login') == 0) {
+        $user = $model->getUserByEmail($_POST['email']);
+        // user is successfuly verified
+        if ($user && password_verify($_POST['password'], $user['password'])) {
+            $loginError = false;
+            $_SESSION['user'] = $user;
+        }
+        // credentials are not valid
+        else {
+            $loginError = true;
+            unset($_SESSION['user']);
+        }
+    }
+    // add transtaction
+    else if (strcmp($_REQUEST['submit'], 'create') == 0) {
+        $result = $model->addTransaction(
+            $_SESSION['user']['id'],
+            $_REQUEST['receiver'],
+            $_REQUEST['amount'],
+            $_REQUEST['desc']
+        );
+        var_dump($result);
+        exit('CREATE FORM SUBMIT');
+    }
+}
 ?>
-
 
 <html>
     <head>
@@ -20,30 +50,14 @@ $transactions = $model->getAllTransactions();
     </head>
     <body>
         <div class="container">
-            <h1>IW Coin - Transaction</h1>
-
-            <?php include_once('include/nav.php'); ?>
-
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Payer</th>
-                        <th scope="col">Receiver</th>
-                        <th scope="col">Comment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($transactions as $tr): ?>
-                    <tr>
-                        <th scope="row"><?= $tr['amount'] ?></th>
-                        <td><?= $tr['payer'] ?></td>
-                        <td><?= $tr['payee'] ?></td>
-                        <td><?= $tr['desc'] ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <?php
+                if(!isset($_SESSION['user'])) {
+                    require_once('include/login.php');
+                }
+                else {
+                    require_once('include/' . ($_GET['path'] ?? 'list') . '.php');
+                }
+            ?>
         </div>
     </body>
 </html>

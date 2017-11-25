@@ -1,24 +1,48 @@
-<html>
-    <head>
-        <title>Administration | IW Coin</title>
-        <meta charset='utf-8'>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>IW Coin - Administration</h1>
-            <form method="POST">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control">
-                </div>
-                <button type="submit" name="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
-    </body>
-</html>
+<?php
+function adminer_object() {
+
+  class AdminerSoftware extends Adminer {
+
+    // custom name in title and heading
+    function name() {
+      return 'Ledger admin';
+    }
+
+  /** Get key used for permanent login
+    * @param bool
+    * @return string cryptic string which gets combined with password or false in case of an error
+    */
+  function permanentLogin($create = false) {
+      return "444b689db7545860a99e4932139c9326";
+    }
+
+    // server, username and password for connecting to database
+    function credentials() {
+      return ['mysql', getenv('MYSQL_USER'), getenv('MYSQL_PASSWORD')];
+    }
+
+    // database name, will be escaped by Adminer
+    function database() {
+      return getenv('MYSQL_DATABASE');
+    }
+
+    // validate user submitted credentials
+    function login($login, $password) {
+      return ($login == getenv('ADMIN_USER') && $password == getenv('ADMIN_PASSWORD'));
+    }
+
+    function tableName($tableStatus) {
+      // tables without comments would return empty string and will be ignored by Adminer
+      return h($tableStatus["Comment"]);
+    }
+
+    function fieldName($field, $order = 0) {
+      // only columns with comments will be displayed and only the first five in select
+      return ($order <= 5 && !preg_match('~_(md5|sha1)$~', $field["field"]) ? h($field["comment"]) : "");
+    }
+
+  }
+
+  return new AdminerSoftware;
+}
+include '../lib/editor-4.3.1-mysql-en.php';
