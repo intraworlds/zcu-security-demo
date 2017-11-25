@@ -1,6 +1,39 @@
-# zcu-security-demo
+# Base website security demo
+- designed for students of [KIV/WEB](https://courseware.zcu.cz/portal/studium/courseware/kiv/web) of {University of West Bohemia](http://www.zcu.cz/en/)
 
 ## development
+### Installation
+1. [Install Docker](https://docs.docker.com/engine/installation/)
+1. [Install Docker Compose](https://docs.docker.com/compose/install/)
+1. Clone this repository `git clone https://github.com/intraworlds/zcu-security-demo.git`
+1. Install dependencies with [Composer](https://getcomposer.org) `composer install`
+
+### Run
+1. run `docker-compose up -d` and you access the website
+ - **app**:`localhost:8088`
+ - **adminer**:`localhost:8086`
+
+### Simulate attacks
+#### XSS
+- create new transaction
+- as description insert `<script>alert('XSS attack');</script>`
+#### SQL injection
+- go to `http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=%27Anonymous%27;`
+
+
+### Docker tips
+Show all running containers
+```
+docker-compose ps
+```
+See logs
+```
+docker-compsoe logs -f
+```
+Connect container
+```
+docker-compose exec apache bash -l
+```
 
 ## attacks
 
@@ -9,6 +42,9 @@
 ### XSS (Cross-site Scripting)
  - [OWASP XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
  - [OWASP testing for XSS](https://www.owasp.org/index.php/Testing_for_Cross_site_scripting)
+ 
+ - [PHP triky: Cross-Site Request Forgery](https://php.vrana.cz/cross-site-request-forgery.php) (czech only)
+ - [Co je Cross-Site Request Forgery a jak se mu bránit](https://www.zdrojak.cz/clanky/co-je-cross-site-request-forgery-a-jak-se-branit/) (czech only)
 
 HTTP Headers
  - [X-XSS-Protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection)
