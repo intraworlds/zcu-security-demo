@@ -39,12 +39,16 @@ class Model {
      * TRANSACTION
      */
 
-    public function getAllTransactions() {
-        $stmt = $this->_pdo->prepare('SELECT l.*, u1.name as payer, u2.name as payee
+    public function getAllTransactions($limit=null) {
+        $sql = 'SELECT l.*, u1.name as payer, u2.name as payee
             FROM ledger l
             LEFT JOIN users u1 ON u1.id = l.payer_id
             LEFT JOIN users u2 ON u2.id = l.payee_id
-            ORDER BY id DESC');
+            ORDER BY id DESC';
+        if (isset($limit)) {
+            $sql .= ' LIMIT ' . (ENABLE_SQL_INJECTION ? $limit : intval($limit));
+        }
+        $stmt = $this->_pdo->prepare($sql);
         $q = $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,5 +1,5 @@
 <?php
-$transactions = $model->getAllTransactions();
+$transactions = $model->getAllTransactions($_GET['limit']);
 ?>
 
 <h1>IW Coin - Transaction</h1>
