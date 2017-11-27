@@ -64,4 +64,25 @@ class Model {
         return $statement->execute();
     }
 
+    /*
+     * USER & TRANSACTION
+     */
+
+    public function getUserBalance($userId) {
+        // Credit (-)
+        $stmt = $this->_pdo->prepare('SELECT SUM(amount) as total
+            FROM ledger l
+            WHERE payer_id = ?');
+        $stmt->execute([$userId]);
+        $credit = $stmt->fetch();
+        // Debit (+)
+        $stmt = $this->_pdo->prepare('SELECT SUM(amount) as total
+            FROM ledger l
+            WHERE payee_id = ?');
+        $stmt->execute([$userId]);
+        $debit = $stmt->fetch();
+
+        return intval($debit['total']) - intval($credit['total']);
+    }
+
 }

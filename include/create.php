@@ -5,7 +5,19 @@ $users = $model->getAllUsers();
 
 <?php include_once('include/nav.php'); ?>
 
+<?php if ($isError): ?>
+    <div class="alert alert-danger" role="alert">
+      <?= $errorMessage ?>
+    </div>
+<?php
+    endif;
+    unset($isError, $errorMessage);
+?>
+
 <form method="POST">
+    <?php if (!ENABLE_CSRF): ?>
+        <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
+    <?php endif; ?>
     <div class="form-group">
         <label for="receiver">Receiver</label>
         <select class="form-control" id="receiver" name="receiver">

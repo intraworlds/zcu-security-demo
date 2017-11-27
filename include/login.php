@@ -3,7 +3,10 @@
     <div class="alert alert-danger" role="alert">
       Your login or password are not valid.
     </div>
-<?php endif; ?>
+<?php
+    endif;
+    unset($loginError);
+?>
 <form method="POST">
     <div class="form-group">
         <label for="email">Email</label>
