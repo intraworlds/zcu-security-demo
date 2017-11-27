@@ -9,11 +9,15 @@ require_once('include/model.php');
 // logout user
 if (strcmp($_GET['path'], 'logout') == 0) {
     unset($_SESSION['user']);
+    header('Location:/');
+    exit;
 }
+
+// init DB model
 $model = new Model();
 
 if (isset($_SESSION['user'])) {
-    $_SESSION['user']['balance'] = $model->getUserBalance($_SESSION['user']['id']);
+    $currentUserBalance = $model->getUserBalance($_SESSION['user']['id']);
 }
 
 // form handlers
@@ -25,6 +29,7 @@ if (isset($_REQUEST['submit'])) {
         if ($user && password_verify($_POST['password'], $user['password'])) {
             $loginError = false;
             $_SESSION['user'] = $user;
+            $currentUserBalance = $model->getUserBalance($_SESSION['user']['id']);
         }
         // credentials are not valid
         else {
@@ -34,8 +39,7 @@ if (isset($_REQUEST['submit'])) {
     }
     // add transtaction
     else if (strcmp($_REQUEST['submit'], 'create') == 0) {
-        $balance = $_SESSION['user']['balance'];
-        if ($balance >= intval($_REQUEST['amount'])) {
+        if ($currentUserBalance >= intval($_REQUEST['amount'])) {
             if (!ENABLE_CSRF && strcmp($_REQUEST['csrf'], $_SESSION['csrf']) !== 0) {
                 $isError = true;
                 $errorMessage = 'CSRF token is not valid! Please reload page and try again...';
@@ -51,10 +55,12 @@ if (isset($_REQUEST['submit'])) {
         }
         else {
             $isError = true;
-            $errorMessage = 'You don\'t have enough coins. Your current balance is ' . $balance . ' IWC';
+            $errorMessage = 'You don\'t have enough coins. Your current balance is ' . $currentUserBalance . ' IWC';
         }
     }
 }
+
+
 
 // generate new CSRF token
 $_SESSION['csrf'] = md5(random_bytes(32));
@@ -71,12 +77,15 @@ $_SESSION['csrf'] = md5(random_bytes(32));
     </head>
     <body>
         <div class="container">
-            <div class="float-right">
-                <?= $_SESSION['user']['name'] ?>,
-                current balance: <?= $_SESSION['user']['balance'] ?> IWC
-            </div>
+            <?php if (isset($_SESSION['user'])): ?>
+                <div class="float-right">
+                    <?= $_SESSION['user']['name'] ?>,
+                    current balance: <?= $currentUserBalance ?> IWC
+                </div>
+            <?php endif; ?>
+
             <?php
-                if(!isset($_SESSION['user'])) {
+                if (!isset($_SESSION['user'])) {
                     require_once('include/login.php');
                 }
                 else {
