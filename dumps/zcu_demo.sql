@@ -145,8 +145,8 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='Users';
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1,	'Mrs. Chyna Schneider DVM',	'melody49@yahoo.com',	'$2y$10$X57s8F/MM9MkWMkWaVwTMO3jgzEucdh9o3TJONk8lI08gz2pLEtXC'),
-(2,	'Ansel Padberg',	'kaci50@wilderman.com',	'$2y$10$NK84Eb4pie.A0v6f6rvrgOHyJixojshE/vWUOAsWXONJhz5hP1jHe'),
+(1,	'Antonin Neumann',	'antonin.neumann@intraworlds.com',	'$2y$10$cH3CZC9BEFB8WwbUvcvpV.I.3CUtVIsJhObIMBIdPZeF3vTqpyusq'),
+(2,	'Ondrej Esler',	'ondrej.esler@intraworlds.com',	'$2y$10$xnoE07TClLrWOkFWi.k0dOHpJLIzG7zJgE.JCJi03.mMiOFKkGqIG'),
 (3,	'Dr. Adolphus Larson I',	'gulgowski.nikita@huels.com',	'$2y$10$WQcjJcbZc3GaJe7W2AsGBuK0C16pa9238GJSdUag/cJ5WWS1wViha'),
 (4,	'Ethel Lueilwitz',	'balistreri.naomie@jones.biz',	'$2y$10$AglaWCpqSYSk5QK9PaAqvupijJmGiwW8qm3zrA.nS4mBjTBy7LxmO'),
 (5,	'Prof. Willis Ritchie PhD',	'tanya.howell@gmail.com',	'$2y$10$dbqFAqfvrswMt839F7sDRe/kkJ0NgFgAozzyDfmmuaQe18PrAdPT.'),
