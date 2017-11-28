@@ -11,6 +11,9 @@ if (isset($_POST['secret2fa'])) {
 
   return $phaseTwo;
 } else {
+  // WARNING! for demo purposes we're generating always new token,
+  // in the real world you should generate token during user registration
+  // and never change it! see https://en.wikipedia.org/wiki/Google_Authenticator
   $_SESSION['secret2fa'] = $google2fa->generateSecretKey();
 
   $google2faUrl = $google2fa->getQRCodeGoogleUrl(
