@@ -1,5 +1,5 @@
 <?php
-define('TWO_FA_ENABLED', true);
+define('TWO_FA_ENABLED', false);
 
 function adminer_object() {
 
