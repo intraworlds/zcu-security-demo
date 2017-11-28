@@ -1,2 +1,9 @@
-# RewriteEngine on
-# RewriteRule . index.php [L]
+# # denied all files
+# <RequireAll>
+#     Require all denied
+# </RequireAll>
+
+# # whitelist only *.php and other files
+# <FilesMatch "((^$)|(^.+\.(php|css|map|js)$))">
+#     Require all granted
+# </FilesMatch>
