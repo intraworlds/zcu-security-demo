@@ -55,13 +55,12 @@ docker-compose exec apache bash -l
 ### XSS (Cross-site Scripting)
  - [OWASP XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
  - [OWASP testing for XSS](https://www.owasp.org/index.php/Testing_for_Cross_site_scripting)
-
- - [PHP triky: Cross-Site Request Forgery](https://php.vrana.cz/cross-site-request-forgery.php) (czech only)
- - [Co je Cross-Site Request Forgery a jak se mu bránit](https://www.zdrojak.cz/clanky/co-je-cross-site-request-forgery-a-jak-se-branit/) (czech only)
+ - [PHP triky: Cross Site Scripting](https://php.vrana.cz/cross-site-scripting.php) (czech only)
 
 HTTP Headers
  - [X-XSS-Protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection)
  - [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+
 
 ### SQL injection
  - [OWASP SQL injection](https://www.owasp.org/index.php/SQL_Injection)
@@ -69,6 +68,9 @@ HTTP Headers
 
 ### CSFR (Cross-Site Request Forgery)
  - [OWASP CSFR](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))
+ - [Soom](https://www.soom.cz/clanky/484--Cross-Site-Request-Forgery) (czech only)
+ - [PHP triky: Cross-Site Request Forgery](https://php.vrana.cz/cross-site-request-forgery.php) (czech only)
+ - [Co je Cross-Site Request Forgery a jak se mu bránit](https://www.zdrojak.cz/clanky/co-je-cross-site-request-forgery-a-jak-se-branit/) (czech only)
 
 ### Path (Directory) Traversal
  - [OWASP Path Traversal](https://www.owasp.org/index.php/Path_Traversal)
