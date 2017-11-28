@@ -18,9 +18,9 @@ $transactions = $model->getAllTransactions($_GET['limit']);
     <tbody>
         <?php foreach($transactions as $tr): ?>
         <tr>
-            <th scope="row"><?= $tr['amount'] ?></th>
-            <td><?= ENABLE_XSS ? $tr['payer'] : htmlentities($tr['payer']) ?></td>
-            <td><?= ENABLE_XSS ? $tr['payee'] : htmlentities($tr['payee']) ?></td>
+            <td class="font-weight-bold"><?= ENABLE_XSS ? $tr['payer'] : htmlentities($tr['payer']) ?></td>
+            <th scope="row" class="h4">+<?= $tr['amount'] ?>¢</th>
+            <td class="font-weight-bold"><?= ENABLE_XSS ? $tr['payee'] : htmlentities($tr['payee']) ?></td>
             <td><?= ENABLE_XSS ? $tr['desc'] : htmlentities($tr['desc']) ?></td>
         </tr>
         <?php endforeach; ?>
