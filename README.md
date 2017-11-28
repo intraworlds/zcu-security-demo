@@ -11,6 +11,7 @@
 ### Run
 1. run `docker-compose up -d` and you access the website
  - **app**:`localhost:8088`
+  - login: `willis.ritchie@example.com`:`richie`
  - **adminer**:`localhost:8086`
 
 ### Simulate attacks

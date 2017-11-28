@@ -146,10 +146,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
 (1,	'Antonin Neumann',	'antonin.neumann@intraworlds.com',	'$2y$10$cH3CZC9BEFB8WwbUvcvpV.I.3CUtVIsJhObIMBIdPZeF3vTqpyusq'),
-(2,	'Ondrej Esler',	'ondrej.esler@intraworlds.com',	'$2y$10$xnoE07TClLrWOkFWi.k0dOHpJLIzG7zJgE.JCJi03.mMiOFKkGqIG'),
+(2,	'Ondrej Esler',	'ondrej.esler@example.com',	'$2y$10$xnoE07TClLrWOkFWi.k0dOHpJLIzG7zJgE.JCJi03.mMiOFKkGqIG'),
 (3,	'Dr. Adolphus Larson I',	'gulgowski.nikita@huels.com',	'$2y$10$WQcjJcbZc3GaJe7W2AsGBuK0C16pa9238GJSdUag/cJ5WWS1wViha'),
 (4,	'Ethel Lueilwitz',	'balistreri.naomie@jones.biz',	'$2y$10$AglaWCpqSYSk5QK9PaAqvupijJmGiwW8qm3zrA.nS4mBjTBy7LxmO'),
-(5,	'Prof. Willis Ritchie PhD',	'tanya.howell@gmail.com',	'$2y$10$dbqFAqfvrswMt839F7sDRe/kkJ0NgFgAozzyDfmmuaQe18PrAdPT.'),
+(5,	'Prof. Willis Ritchie PhD',	'willis.ritchie@example.com',	'$2y$10$wNSiVP8Cp8mC2BZJGz7cPO.JGR9uKI7RCzkUujPd.xuYRjStFXSzi'),
 (6,	'Sandrine Reilly',	'mya.walsh@terry.org',	'$2y$10$8RGTfP8t5kdkUlsT9RXab..jq0Vg/uZCXmsp7CCaeCRVaSsyDCTAa'),
 (7,	'Emerson Kautzer',	'glenda65@crooks.com',	'$2y$10$si2FE5vjh2vnoq92VHQyuehLGUBL1GNb24sT0HX4pvGhunTCTaTK2'),
 (8,	'Dr. Saul Lehner',	'eschinner@mccullough.org',	'$2y$10$vBxMT7Wp2q9j/8x2xQ7BBeRlt4wRBzqq5gNv1aD6LLGamLdAb8On.'),

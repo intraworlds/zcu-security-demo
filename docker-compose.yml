@@ -1,15 +1,5 @@
 version: '3.2'
 services:
-  # app:
-  #   image: intraworlds/zcu-security-demo:1.0
-  #   build: .
-  #   environment:
-  #     # btw. this is also security issue - never put a password into VCS! - this is OK for demo purpose
-  #     DB_DATA_PATH: /var/lib/mysql
-  #     DB_ROOT_PASS: ""
-  #     DB_USER: zcu_demo
-  #     DB_PASS: password
-  # see https://hub.docker.com/_/php/
   apache:
     build: .
     env_file:
@@ -26,7 +16,7 @@ services:
     env_file: config/mysql.env
     # see https://hub.docker.com/_/mysql/
     volumes:
-      - ./dumps/:/docker-entrypoint-initdb.d
+      - ./dumps/zcu_demo.sql:/docker-entrypoint-initdb.d/zcu_demo.sql
   adminer:
     image: adminer # official image is OK
     ports:
