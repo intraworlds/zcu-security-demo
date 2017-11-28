@@ -1,4 +1,6 @@
 <?php
+define('TWO_FA_ENABLED', true);
+
 function adminer_object() {
 
   class AdminerSoftware extends Adminer {
@@ -28,7 +30,15 @@ function adminer_object() {
 
     // validate user submitted credentials
     function login($login, $password) {
-      return ($login == getenv('ADMIN_USER') && $password == getenv('ADMIN_PASSWORD'));
+      $_SESSION['phaseOne'] = $_SESSION['phaseOne'] ?: ($login == getenv('ADMIN_USER') && $password == getenv('ADMIN_PASSWORD'));
+
+      if ($_SESSION['phaseOne'] && TWO_FA_ENABLED) {
+        $phaseTwo = require __DIR__ . '/two_factor.php';
+      } else {
+        $phaseTwo = true;
+      }
+
+      return $_SESSION['phaseOne'] && $phaseTwo;
     }
 
     function tableName($tableStatus) {
