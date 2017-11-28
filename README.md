@@ -1,5 +1,5 @@
 # Base website security demo
-- designed for students of [KIV/WEB](https://courseware.zcu.cz/portal/studium/courseware/kiv/web) of {University of West Bohemia](http://www.zcu.cz/en/)
+- designed for students of [KIV/WEB](https://courseware.zcu.cz/portal/studium/courseware/kiv/web) of [University of West Bohemia](http://www.zcu.cz/en/)
 
 ## development
 ### Installation
