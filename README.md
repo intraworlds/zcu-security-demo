@@ -64,6 +64,8 @@ HTTP Headers
 
 ### SQL injection
  - [OWASP SQL injection](https://www.owasp.org/index.php/SQL_Injection)
+ - [Soom: SQL Injection (Full Paper)](https://www.soom.cz/clanky/1180--SQL-Injection-Full-Paper#sekce5) (czech only)
+ - [PHP triky: Obrana proti SQL Injection](https://php.vrana.cz/obrana-proti-sql-injection.php) (czech only)
 
 
 ### CSFR (Cross-Site Request Forgery)
