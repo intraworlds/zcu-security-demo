@@ -36,6 +36,27 @@ $.post({
 </script>
 ```
 
+#### Directory traversal
+try following URLs
+- http://localhost:8088/docker-compose.yml
+- http://localhost:8088/config/app.env
+- http://localhost:8088/dumps/zcu_demo.sql
+
+##### Defense
+Adjust apache configuration
+```
+# denied all files
+<RequireAll>
+    Require all denied
+</RequireAll>
+
+# whitelist only *.php and other files
+<FilesMatch "((^$)|(^.+\.(php|css|map|js)$))">
+    Require all granted
+</FilesMatch>
+```
+
+
 #### Weak hash algorithm
 try use `hashcat`
 ```
