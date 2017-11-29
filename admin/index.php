@@ -1,13 +1,18 @@
 <?php
 define('TWO_FA_ENABLED', false);
 
+/**
+ * Based on Adminer Editor
+ *
+ * @see https://www.adminer.org/en/editor/
+ */
 function adminer_object() {
 
   class AdminerSoftware extends Adminer {
 
     // custom name in title and heading
     function name() {
-      return 'Ledger admin';
+      return 'IW Coin admin';
     }
 
   /** Get key used for permanent login
