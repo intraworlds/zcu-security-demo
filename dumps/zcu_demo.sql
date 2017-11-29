@@ -24,16 +24,16 @@ CREATE TABLE `ledger` (
 ) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='Ledger';
 
 INSERT INTO `ledger` (`id`, `payer_id`, `payee_id`, `amount`, `desc`) VALUES
-(1,	NULL,	1,	100,	'Initial credit'),
-(2,	NULL,	2,	100,	'Initial credit'),
-(3,	NULL,	3,	100,	'Initial credit'),
-(4,	NULL,	4,	100,	'Initial credit'),
-(5,	NULL,	5,	100,	'Initial credit'),
-(6,	NULL,	6,	100,	'Initial credit'),
-(7,	NULL,	7,	100,	'Initial credit'),
-(8,	NULL,	8,	100,	'Initial credit'),
-(9,	NULL,	9,	100,	'Initial credit'),
-(10,	NULL,	10,	100,	'Initial credit'),
+(1,	NULL,	1,	150,	'Initial credit'),
+(2,	NULL,	2,	150,	'Initial credit'),
+(3,	NULL,	3,	150,	'Initial credit'),
+(4,	NULL,	4,	150,	'Initial credit'),
+(5,	NULL,	5,	150,	'Initial credit'),
+(6,	NULL,	6,	150,	'Initial credit'),
+(7,	NULL,	7,	150,	'Initial credit'),
+(8,	NULL,	8,	150,	'Initial credit'),
+(9,	NULL,	9,	150,	'Initial credit'),
+(10,	NULL,	10,	150,	'Initial credit'),
 (11,	2,	3,	10,	'I see\"!\' \'You might just as.'),
 (12,	3,	10,	7,	'An enormous puppy was.'),
 (13,	8,	10,	2,	'So she stood looking at it.'),
@@ -145,7 +145,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='Users';
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1,	'Antonin Neumann',	'antonin.neumann@intraworlds.com',	'$2y$10$cH3CZC9BEFB8WwbUvcvpV.I.3CUtVIsJhObIMBIdPZeF3vTqpyusq'),
+(1,	'Antonin Neumann',	'antonin.neumann@example.com',	'$2y$10$cH3CZC9BEFB8WwbUvcvpV.I.3CUtVIsJhObIMBIdPZeF3vTqpyusq'),
 (2,	'Ondrej Esler',	'ondrej.esler@example.com',	'$2y$10$xnoE07TClLrWOkFWi.k0dOHpJLIzG7zJgE.JCJi03.mMiOFKkGqIG'),
 (3,	'Dr. Adolphus Larson I',	'gulgowski.nikita@huels.com',	'$2y$10$WQcjJcbZc3GaJe7W2AsGBuK0C16pa9238GJSdUag/cJ5WWS1wViha'),
 (4,	'Ethel Lueilwitz',	'balistreri.naomie@jones.biz',	'$2y$10$AglaWCpqSYSk5QK9PaAqvupijJmGiwW8qm3zrA.nS4mBjTBy7LxmO'),
