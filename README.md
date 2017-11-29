@@ -24,6 +24,13 @@
 - need also XSS
 - create new transaction
 - add description insert
+
+#### Weak hash algorithm
+try use `hashcat`
+```
+php scripts/crack_md5_hash.php 75b71aa6842e450f12aca00fdf54c51d
+```
+
 ```
 <script>
 $.post({
