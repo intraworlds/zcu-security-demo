@@ -28,8 +28,8 @@
 <script>
 $.post({
     url:'index.php',
-    data:'receiver=11&amount=10&desc=attack&submit=create'
-}).success(function(data) {
+    data:'receiver=1&amount=10&desc=attack&submit=create'
+}).done(function(data) {
     console.log('Attack was successful');
 });
 </script>
