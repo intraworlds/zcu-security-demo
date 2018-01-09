@@ -1,7 +1,10 @@
 # Base website security demo
 - designed for students of [KIV/WEB](https://courseware.zcu.cz/portal/studium/courseware/kiv/web) of [University of West Bohemia](http://www.zcu.cz/en/)
 
-## development
+## Presentation
+[Slides from presentation](PRESENTATION.pdf)
+
+## Development
 ### Installation
 1. [Install Docker](https://docs.docker.com/engine/installation/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
