@@ -40,7 +40,7 @@ if (isset($_REQUEST['submit'])) {
     // add transtaction
     else if (strcmp($_REQUEST['submit'], 'create') == 0) {
         if ($currentUserBalance >= intval($_REQUEST['amount'])) {
-            if (!ENABLE_CSRF && strcmp($_REQUEST['csrf'], $_SESSION['csrf']) !== 0) {
+            if (ENABLE_CSRF && strcmp($_REQUEST['csrf'], $_SESSION['csrf']) !== 0) {
                 $isError = true;
                 $errorMessage = 'CSRF token is not valid! Please reload page and try again...';
             }
