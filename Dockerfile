@@ -8,7 +8,7 @@ RUN set -ex; \
     apt-get update && apt-get install -y --no-install-recommends git unzip; \
     docker-php-ext-install -j$(nproc) pdo_mysql; \
     cd /var/www/; \
-    curl https://getcomposer.org/download/1.5.2/composer.phar --output composer.phar; \
+    curl https://getcomposer.org/composer.phar --output composer.phar; \
     php composer.phar install; \
     php composer.phar clear-cache; \
     rm composer.phar; \
@@ -17,4 +17,3 @@ RUN set -ex; \
 
 # enable apache modules
 RUN a2enmod rewrite
-
