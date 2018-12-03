@@ -6,38 +6,43 @@
 
 ## Development
 ### Installation
-1. [Install Docker](https://docs.docker.com/engine/installation/)
+1. [Install Docker](https://docs.docker.com/install/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
 1. Clone this repository `git clone https://github.com/intraworlds/zcu-security-demo.git`
-1. Install dependencies with [Composer](https://getcomposer.org) `composer install`
+or download [ZIP file](https://github.com/intraworlds/zcu-security-demo/archive/master.zip)
 
 ### Run
-1. run `docker-compose up -d` and you access the website
- - **app**:`localhost:8088`
-  - login: `willis.ritchie@example.com`:`richie`
- - **adminer**:`localhost:8086`
+1. run `docker-compose up` and you access the website
+ - **app**: http://localhost:8088/
+  - username: `willis.ritchie@example.com`
+  - password: `richie`
+ - **adminer**: http://localhost:8086/?server=mysql&username=admin&db=zcu_demo
+  - password: `1234`
+
+> Note: It'll take a minute to build docker container - be patient.
 
 ### Simulate attacks
-#### XSS
-- create new transaction
-- as description insert `<script>alert('XSS attack');</script>`
-#### SQL injection
-- go to `http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=%27Anonymous%27;`
-#### CSRF
-- need also XSS
-- create new transaction
-- add description insert
 
-```
+#### CSRF
+- goto http://localhost:8088/?path=create&receiver=1&amount=1&desc=❤️&submit=create
+- observe that 1 IW coin was transfered to user #1 without your consent
+
+#### XSS (with CSRF)
+- goto http://localhost:8088/?path=create
+- create new transaction with following description
+```html
+❤️
 <script>
-$.post({
-    url:'index.php',
-    data:'receiver=1&amount=10&desc=attack&submit=create'
-}).done(function(data) {
-    console.log('Attack was successful');
-});
+fetch("/?path=create&receiver=1&amount=1&desc=❤️&submit=create");
 </script>
 ```
+- observe that now everybody who visits list of transactions will send a coin
+to user #1 without consent
+
+#### SQL injection
+- go to http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=%27Anonymous%27;
+- refresh page
+- observe that all users are named `Anonymous`
 
 #### Directory traversal
 try following URLs
@@ -73,7 +78,7 @@ docker-compose ps
 ```
 See logs
 ```
-docker-compsoe logs -f
+docker-compose logs -f
 ```
 Connect container
 ```
@@ -89,16 +94,14 @@ docker-compose exec apache bash -l
  - [OWASP testing for XSS](https://www.owasp.org/index.php/Testing_for_Cross_site_scripting)
  - [PHP triky: Cross Site Scripting](https://php.vrana.cz/cross-site-scripting.php) (czech only)
 
-HTTP Headers
+### HTTP Headers
  - [X-XSS-Protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection)
  - [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
-
 
 ### SQL injection
  - [OWASP SQL injection](https://www.owasp.org/index.php/SQL_Injection)
  - [Soom: SQL Injection (Full Paper)](https://www.soom.cz/clanky/1180--SQL-Injection-Full-Paper#sekce5) (czech only)
  - [PHP triky: Obrana proti SQL Injection](https://php.vrana.cz/obrana-proti-sql-injection.php) (czech only)
-
 
 ### CSFR (Cross-Site Request Forgery)
  - [OWASP CSFR](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))
@@ -108,3 +111,9 @@ HTTP Headers
 
 ### Path (Directory) Traversal
  - [OWASP Path Traversal](https://www.owasp.org/index.php/Path_Traversal)
+
+### Others
+ - [Self tweeting tweet](https://twitter.com/derGeruhn/status/476764918763749376)
+
+[//]: # (Here you can see hidden image with CSRF attack)
+![❤️](http://localhost:8088/?path=create&receiver=1&amount=1&desc=❤️&submit=create)
