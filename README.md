@@ -114,6 +114,3 @@ docker-compose exec apache bash -l
 
 ### Others
  - [Self tweeting tweet](https://twitter.com/derGeruhn/status/476764918763749376)
-
-### "Real" CSRF demo
-<a href="http://localhost:8088/?path=create&receiver=1&amount=1&desc=❤️&submit=create">![❤️](click&win.png)</a>
