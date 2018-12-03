@@ -51,6 +51,9 @@ if (isset($_REQUEST['submit'])) {
                     $_REQUEST['amount'],
                     $_REQUEST['desc']
                 );
+
+                header('Location: /?path=list');
+                exit;
             }
         }
         else {
